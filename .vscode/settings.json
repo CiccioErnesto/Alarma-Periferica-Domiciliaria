@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ticks_systick.h": "c"
+        "ticks_systick.h": "c",
+        "pin_gpio.C": "cpp"
     }
 }
