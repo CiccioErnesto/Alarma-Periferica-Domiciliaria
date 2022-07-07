@@ -1,0 +1,33 @@
+
+This directory is intended for PlatformIO Unit Testing and project tests.
+
+Unit Testing is a software testing method by which individual units of
+source code, sets of one or more MCU program modules together with associated
+control data, usage procedures, and operating procedures, are tested to
+determine whether they are fit for use. Unit testing finds problems early
+in the development cycle.
+
+More information about PlatformIO Unit Testing:
+- https://docs.platformio.org/page/plus/unit-testing.html
+
+# Notas:
+- Puede haber varios conjuntos de pruebas, cada uno se define en una carpeta 
+  separada dentro de test.
+- Por defecto el código a probar se ubicará en subcarpetas de lib (librerías 
+  privadas) y se supone que el código dentro de src es solo código de
+  inicialización y lazo principal, haciendo uso de módulos en subcarpetas de
+  lib.
+- Para asegurar que se compile el código en las subcarpetas de lib, hay que
+  añadirlas en la lista `lib_deps` dentro de platformio.ini
+
+Para ejecutar las pruebas:
+- Desde la consola de platformio ejecutar el comando `pio test`
+    - Cada conjunto de pruebas se compila, carga y ejecuta por separado
+    - Pueden omitirse conjuntos de pruebas con la opción ignore (-i) 
+      `pio test -i <patrón>` donde patrón puede tener caracteres comodín, 
+      ejemplo `pio test -i led*` omitirá cualquier conjunto de pruebas cuyo 
+      nombre comienze por "led".
+    - Pueden ejecutarse solo determinados conjuntos de prueba con la opción
+      filter (-f) `pio test -f <patrón>` donde patrón puede tener caracteres
+      comodín. Ejemplo `pio test -f condicionales` solo ejecutará el conjunto
+      de pruebas "condicionales"
