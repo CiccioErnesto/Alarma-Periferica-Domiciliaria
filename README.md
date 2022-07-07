@@ -1,10 +1,35 @@
-# plantilla-e4-2022
-Plantilla de proyecto para la materia Electrónica 4 de la carrera Ingeniería Electrónica, Facultad de Ciencias Exactas y Tecnología, Universidad Nacional de Tucumán.
+# Alarma Periferica Domiciliaria
 
-Proyecto mínimo de PlatformIO para bluepill_f103c8 con framework CMSYS. 
+## Descripcion General
 
-Programa sencillo de parpadeo de LED integrado a la placa bluepill, para verificar funcionamiento del entorno y programador.
+Alarma de uso general destinada mayormente al hogar, puede utilizarse dentro y fuera del domicilio.
 
-Configuración para pruebas usando la salida serial USART1, pin 9, con configuración 115200-8-n-1. Una librería de ejemplo y su correspondiente conjunto de pruebas para verificar la conexión serial y el funcionamiento de las pruebas en PlatformIO.
+Tiene el objeivo de proteger y cubrir con detectores y sensores las zonas vulnerables de la vivienda es decir lugares con puerta o puertas principales, y en caso de haber un jardin, la vigilancia de zonas perimetrales.
 
-Para usar hay que modificar platformio.ini y reemplazar el valor de `test_port` por el puerto serie correcto para la configuración de cada máquina.
+## Manual De Uso
+
+### Armado
+
+1. Poner el comando Armar/Desarmar. Por defecto(1234)
+
+2. La alarma indica "espera" durante un tiempo de 15seg para que el usuario se aparte de la zona.
+
+3. La alarma indica armado, es decir puede dispararse el sonido de deteccion de movimiento en la zona.
+
+### Desarmado
+
+4. Al acercase a la alarma para su desarmado detectara su movimiento entonces sonará, es comun, para desarmarla poner el comando Armar/Desarmar. Por defecto(1234). 
+
+5. La alarma permanecerá en estado desarmado, hasta volverla a armar. 
+
+## Datos Tecnicos
+
+1. Alimentacion 5 v
+
+2.
+
+3.
+
+
+mpu6050
+
