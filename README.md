@@ -26,9 +26,11 @@ Tiene el objeivo de proteger y cubrir con detectores y sensores las zonas vulner
 
 1. Alimentacion 5 v
 
-2.
+2. La duracion de sonido de alarma al detectar movimiento es configurable, por defecto se establece 40seg. 
 
-3.
+3. Se puede modificar el valor del codigo de Armado/Desarmado.
+
+4. 
 
 
 mpu6050
