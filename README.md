@@ -8,30 +8,26 @@ Tiene el objeivo de proteger y cubrir con detectores y sensores las zonas vulner
 
 ## Manual De Uso
 
-### Armado
-
-1. Poner el comando Armar/Desarmar. Por defecto(1234)
+1. Poner el codigo Armar/Desarmar. Por defecto(1234)
 
 2. La alarma indica "espera" durante un tiempo de 15seg para que el usuario se aparte de la zona.
 
 3. La alarma indica armado, es decir puede dispararse el sonido de deteccion de movimiento en la zona.
 
-### Desarmado
-
-4. Al acercase a la alarma para su desarmado detectara su movimiento entonces sonará, es comun, para desarmarla poner el comando Armar/Desarmar. Por defecto(1234). 
+4. Al acercase a la alarma para su desarmado detectara su movimiento entonces sonará, es comun, para desarmarla poner el codigo Armar/Desarmar. Por defecto(1234). 
 
 5. La alarma permanecerá en estado desarmado, hasta volverla a armar. 
 
-## Datos Tecnicos
+## Especificaciones
 
-1. Alimentacion 5 v
+1. Alimentacion 5 v.
 
 2. La duracion de sonido de alarma al detectar movimiento es configurable, por defecto se establece 40seg. 
 
 3. Se puede modificar el valor del codigo de Armado/Desarmado.
 
-4. 
+4. Teclado e indicadores dentro del hogar.
 
+5. Alerta fuera del hogar
 
-mpu6050
 
