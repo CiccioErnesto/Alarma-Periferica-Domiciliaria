@@ -1,6 +1,8 @@
 {
     "files.associations": {
+        "*.c": "c",
         "ticks_systick.h": "c",
-        "pin_gpio.C": "cpp"
+        "pin_gpio.C": "cpp",
+        "evento.h": "c"
     }
 }

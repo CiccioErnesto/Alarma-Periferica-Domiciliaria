@@ -4,6 +4,7 @@
 #include <timer_systick.h>
 #include <pin_gpio.h>
 
+// Ejemplo de implementacion en hardware sencillo, falta definir el antirrebote, que no funcionaba.
 
 static Pin pinled ;
 static Pin pinLlave;
@@ -20,7 +21,7 @@ void setup (void){
     TimerSysTick_init();
     iniciaRelojGPIO();
     Pin_init(&pinled,   GPIOC , 13);
-    Pin_init(&pinLlave, GPIOC , 3);
+    Pin_init(&pinLlave, GPIOC , 7);
     Pin_init(&pinzona,  GPIOC , 4);
     
     Pin_modo(&pinled,   CPIN_SALIDA_2Mhz);
