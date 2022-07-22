@@ -3,6 +3,7 @@
         "*.c": "c",
         "ticks_systick.h": "c",
         "pin_gpio.C": "cpp",
-        "evento.h": "c"
+        "evento.h": "c",
+        "pin_gpio.h": "c"
     }
 }

@@ -12,10 +12,11 @@ typedef enum ConfigPin {
     CPIN_ANALOGICO      = 0b0000,
     CPIN_ENTRADA        = 0b0100,
     CPIN_ENTRADA_PULL   = 0b1000,
-    CPIN_SALIDA_2Mhz    = 0b0010,
-    CPIN_SALIDA_10Mhz   = 0b0001,
-    CPIN_SALIDA_50Mhz   = 0b0011,
-
+    CPIN_SALIDA_2MHz    = 0b0010,
+    CPIN_SALIDA_10MHz   = 0b0001,
+    CPIN_SALIDA_50MHz   = 0b0011,
+    CPIN_SALIDA_OD_2MHz = 0b0110,
+    
 }ConfigPin ;
 
 void Pin_init(Pin * self, GPIO_TypeDef * puerto, int nrPin);

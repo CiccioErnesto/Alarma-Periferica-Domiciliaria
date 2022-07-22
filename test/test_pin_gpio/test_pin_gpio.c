@@ -16,7 +16,7 @@ enum {
     ODR_PRUEBA_L_1   = IDR_PRUEBA_L_1,
     CRL_RESET        = 0x44444444UL,
     CRL_ENTRADA_PULL = 0x84444444UL,
-    CRL_SALIDA_2Mhz  = 0x24444444UL,
+    CRL_SALIDA_2MHz  = 0x24444444UL,
     PIN_H            = 8,
     MASCARA_H        = 1<<8,
     IDR_PRUEBA_H_0   = ~MASCARA_H,
@@ -25,7 +25,7 @@ enum {
     ODR_PRUEBA_H_1   = IDR_PRUEBA_H_1,
     CRH_RESET        = 0x44444444UL,
     CRH_ENTRADA_PULL = 0x44444448UL,
-    CRH_SALIDA_2Mhz  = 0x44444442UL,
+    CRH_SALIDA_2MHz  = 0x44444442UL,
 };
 
 void setUp(void){
@@ -49,12 +49,12 @@ static void debe_configurar_pin_entrada_pull(void){
 static void debe_configurar_pin_salida(void){
 
     TEST_ASSERT_EQUAL_HEX32(CRL_RESET,miPuerto.CRL);
-    Pin_modo(&miPinL,CPIN_SALIDA_2Mhz);
-    TEST_ASSERT_EQUAL_HEX32(CRL_SALIDA_2Mhz,miPuerto.CRL);
+    Pin_modo(&miPinL,CPIN_SALIDA_2MHz);
+    TEST_ASSERT_EQUAL_HEX32(CRL_SALIDA_2MHz,miPuerto.CRL);
 
     TEST_ASSERT_EQUAL_HEX32(CRH_RESET,miPuerto.CRH);
-    Pin_modo(&miPinH,CPIN_SALIDA_2Mhz);
-    TEST_ASSERT_EQUAL_HEX32(CRH_SALIDA_2Mhz,miPuerto.CRH);
+    Pin_modo(&miPinH,CPIN_SALIDA_2MHz);
+    TEST_ASSERT_EQUAL_HEX32(CRH_SALIDA_2MHz,miPuerto.CRH);
 }
 
 static void debe_leer_entrada(void)
