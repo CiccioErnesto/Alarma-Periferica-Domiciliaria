@@ -15,8 +15,6 @@ typedef struct App {
 	Interfaz interfaz;
 	Evento e ;
     struct {
-        Pin filas[4];
-        Pin cols[4];
         Pin armada ;
 		Pin deteccion;
 		Pin sirena ;
