@@ -77,7 +77,7 @@ static Evento entrada(Evento  e)
 	if(e)
 		esalida = e;
 	else{
-		// proceso de teclado...
+		// proceso de teclado... HOOAAAA
 	}
 	return esalida;
 }
