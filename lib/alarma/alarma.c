@@ -19,12 +19,8 @@ Evento Alarma_procesa(Alarma *self,Evento e)
 	break;case ALARMA_ARMADA:
 		switch(e){
 		break;case EV_LLAVE:
-		    if(CompararClave()){
-    			self->estado = ALARMA_DESARMADA;
-    			esalida = EV_DESARMADA;
-		    } else {
-		        esalida = EV_CLAVE_INCORRECTA;
-		    }
+			self->estado = ALARMA_DESARMADA;
+			esalida = EV_DESARMADA;
 		break;case EV_DETECCION:
 			self->estado = ALARMA_DISPARADA;
 			esalida = EV_ALERTA;
@@ -35,12 +31,8 @@ Evento Alarma_procesa(Alarma *self,Evento e)
 	break;case ALARMA_DESARMADA:
 		switch(e){
 		break;case EV_LLAVE:
-		    if(CompararClave()){
-    			self->estado = ALARMA_ARMADA;
-    			esalida = EV_ARMADA;
-		    } else {
-		        esalida = EV_CLAVE_INCORRECTA;
-		    }
+			self->estado = ALARMA_ARMADA;
+			esalida = EV_ARMADA;
 		break;default:
 			esalida = e;
 		break;
@@ -48,12 +40,8 @@ Evento Alarma_procesa(Alarma *self,Evento e)
 	break;case ALARMA_DISPARADA:
 		switch(e){
 		break;case EV_LLAVE:
-		    if(CompararClave()){
-    			self->estado = ALARMA_DESARMADA;
-    			esalida = EV_DESARMADA;
-		    } else {
-		        esalida = EV_CLAVE_INCORRECTA;
-		    }
+			self->estado = ALARMA_DESARMADA;
+			esalida = EV_DESARMADA;
 		break;default:
 			esalida = e;
 		}

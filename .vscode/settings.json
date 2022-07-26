@@ -4,6 +4,7 @@
         "ticks_systick.h": "c",
         "pin_gpio.C": "cpp",
         "evento.h": "c",
-        "pin_gpio.h": "c"
+        "pin_gpio.h": "c",
+        "timer_systick.h": "c"
     }
 }

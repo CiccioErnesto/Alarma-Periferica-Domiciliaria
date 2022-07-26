@@ -3,7 +3,12 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <pin_gpio.h>
+#include <string.h>
 
-char SalidaTeclado(int fila,int columna);
-bool CompararClave();
+
+void teclado_init(void);
+char teclado_lee(void);
+bool comprobarClave(char* clave);
+
 #endif

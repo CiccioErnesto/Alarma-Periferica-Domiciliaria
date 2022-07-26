@@ -1,24 +1,28 @@
 #include <alarma.h>
 #include <interfaz.h>
 #include <evento.h>
+#include <teclado.h>
 #include <app.h>
 #include <stm32f1xx.h>
 #include <timer_systick.h>
 #include <pin_gpio.h>
 
 
+char clave[4]={"0000"};
+
 typedef struct App {
     Alarma alarma;
 	Interfaz interfaz;
 	Evento e ;
     struct {
-        Pin filas [4];
-        Pin cols  [4];
+        Pin filas[4];
+        Pin cols[4];
         Pin armada ;
 		Pin deteccion;
 		Pin sirena ;
     }pines;
 }App;
+
 
 static App self ={.e = EV_NULO};
 
@@ -29,24 +33,19 @@ static void iniciaRelojGPIO(void){
     //RCC->APB2ENR |= RCC_APB2ENR_IOPCEN ;   //Puerto C
 }
 
-void App_init (void){
+void App_init(void){
     enum{VALOR_PIN_LED_ENCENDIDO = 0};
     TimerSysTick_init();
     iniciaRelojGPIO();
    
     Alarma_init(&self.alarma);
 	
+    // Inicio teclado
+    // debo iniciar el puerto dentro de teclado.c o esta bien en app. ?
+    
+   teclado_init();
+   teclado_lee();
    
-   for(int k=0; k<4 ; ++k){
-        Pin_init(&self.pines.filas[k],GPIOA,0+k);
-        Pin_escribe(&self.pines.filas[k],1);
-        Pin_modo(&self.pines.filas[k],CPIN_SALIDA_OD_2MHz);
-
-        Pin_init(&self.pines.cols[k],GPIOA,4+k);
-        Pin_escribe(&self.pines.cols[k],1);
-        Pin_modo(&self.pines.cols[k],CPIN_ENTRADA_PULL);
-   }
-
    //init pines armada, det. y sirena.
 
     //Pin_init(&self.pines.armada,GPIOx,nropin);
@@ -72,12 +71,38 @@ void App_loop (void){
 
 static Evento entrada(Evento  e)
 {
-	
+	char tecla,auxTecla;
 	Evento esalida = EV_NULO;
-	if(e)
-		esalida = e;
-	else{
-		// proceso de teclado...
-	}
+    if ((tecla=teclado_lee())!=0)
+    {
+        e=EV_TECLA_PRESIONADA;
+    }
+    
+    switch (e)
+    {
+    case EV_TECLA_LIBERADA:
+        if (comprobarClave(clave))
+        {
+            esalida=EV_LLAVE;
+        }
+        break;
+    case EV_TECLA_PRESIONADA:
+        do {
+            auxTecla=tecla;
+        } while((tecla=teclado_lee())!=0);
+
+        for (int i = 0; i < 3; i++)
+        {
+            clave[i]=clave[i+1];
+        }
+        clave[3]=auxTecla;
+
+        esalida=EV_TECLA_LIBERADA;
+
+        break;
+    default:
+        esalida=e;
+        break;
+    }
 	return esalida;
 }

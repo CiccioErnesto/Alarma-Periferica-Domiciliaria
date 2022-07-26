@@ -23,19 +23,15 @@ Evento Interfaz_actualiza(Interfaz *self, Evento e)
 		self->indDeteccion = true;  // Alerta implica detección
 	break;case EV_ARMADA:
 		self->indArmada = true;
-		self->indClave = false;
 		if (self->indDeteccion)
 		    esalida = EV_DETECCION; // Recuerda que hay una detección activa.
 	break;case EV_DESARMADA:
-		self->indClave = false;
 		self->sirena = false;
 		self->indArmada = false;
 	break;case EV_DETECCION:
 		self->indDeteccion = true;
 	break;case EV_FIN_DETECCION:
 		self->indDeteccion = false;
-	break;case EV_CLAVE_INCORRECTA:
-		self->indClave = true;
 	break;default:
 		esalida = e;
 	}
