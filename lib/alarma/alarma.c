@@ -8,9 +8,10 @@
 
     
 
-void Alarma_init(Alarma *self)
+void Alarma_init(Alarma *self,TimerEvento *timer)
 {
 	self->estado = ALARMA_DESARMADA;
+	self->timer  = timer;
 }
 Evento Alarma_procesa(Alarma *self,Evento e)
 {
@@ -42,6 +43,15 @@ Evento Alarma_procesa(Alarma *self,Evento e)
 		break;case EV_LLAVE:
 			self->estado = ALARMA_DESARMADA;
 			esalida = EV_DESARMADA;
+		break;case EV_FIN_DETECCION:
+			TimerEvento_inicia(self->timer,40000UL);
+			esalida = EV_FIN_DETECCION;
+		break;case EV_DETECCION:
+			TimerEvento_cancela(self->timer);
+			esalida = EV_DETECCION;
+		break;case EV_TIMEOUT:
+			self->estado = ALARMA_ARMADA;
+			esalida = EV_FIN_ALERTA;
 		break;default:
 			esalida = e;
 		}

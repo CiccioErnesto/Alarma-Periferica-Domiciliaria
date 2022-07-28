@@ -5,11 +5,13 @@
 #include <stm32f1xx.h>
 #include <timer_systick.h>
 #include <pin_gpio.h>
+#include <timer_evento.h>
 #include "entrada.h"
 #include "deteccion.h"
 
 typedef struct App {
     Alarma alarma;
+    TimerEvento timer;
 	Interfaz interfaz;
 	Evento e ;
     struct {
@@ -34,7 +36,8 @@ void App_init(void){
     TimerSysTick_init();
     iniciaRelojGPIO();
    
-    Alarma_init(&self.alarma);
+    TimerEvento_init(&self.timer);
+    Alarma_init(&self.alarma,&self.timer);
 	
     Entrada_init();
     Deteccion_init();    
@@ -66,6 +69,7 @@ void App_init(void){
 void App_loop (void){
     Interfaz_presenta(&self.interfaz);
     self.e = Deteccion_procesa(self.e);
+    self.e = TimerEvento_procesa(&self.timer,self.e);
 	self.e = Entrada_procesa(self.e);
 	self.e = Alarma_procesa(&self.alarma, self.e);
 	self.e = Interfaz_actualiza(&self.interfaz,self.e);

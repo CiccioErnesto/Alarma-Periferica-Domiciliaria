@@ -13,9 +13,10 @@ enum Evento {
 	// Eventos de la alarma
 	EV_ALERTA,              // Indica el inicio de una condición de alerta
 	EV_ARMADA,              // Indica el armado de la alarma
-	EV_DESARMADA,           // Indica el desarme de la alarma
+	EV_DESARMADA,           // Indica el desarme de la alarma. Implica fin alerta.
+	EV_FIN_ALERTA,			// Indica que finaliza una condición de alerta
 	// Eventos de control
-	EV_SALIR,               // Salir del programa
+	EV_TIMEOUT,
 	// -Fin de eventos-
 	NUM_EVENTOS
 };

@@ -21,6 +21,8 @@ Evento Interfaz_actualiza(Interfaz *self, Evento e)
 	break;case EV_ALERTA:
 		self->sirena = true;
 		self->indDeteccion = true;  // Alerta implica detección
+	break;case EV_FIN_ALERTA:
+		self->sirena = false;
 	break;case EV_ARMADA:
 		self->indArmada = true;
 		if (self->indDeteccion)
