@@ -10,8 +10,6 @@ enum Evento {
 	EV_DETECCION,           // Indica que el circuito de detección se activó
 	EV_FIN_DETECCION,       // Indica que el circuito de detección se desactivó
 	EV_LLAVE,               // Indica que se recibió un comando de armar/desarmar
-	EV_TECLA_PRESIONADA,
-	EV_TECLA_LIBERADA,
 	// Eventos de la alarma
 	EV_ALERTA,              // Indica el inicio de una condición de alerta
 	EV_ARMADA,              // Indica el armado de la alarma

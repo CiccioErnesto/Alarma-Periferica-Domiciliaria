@@ -11,13 +11,18 @@ static pines self ;
 
 void teclado_init(void){
 
+    Pin_init(&self.filas[0],GPIOA,7);
+    Pin_init(&self.filas[1],GPIOA,6);
+    Pin_init(&self.filas[2],GPIOA,5);
+    Pin_init(&self.filas[3],GPIOA,4);
+    Pin_init(&self.cols[0],GPIOA,3);
+    Pin_init(&self.cols[1],GPIOA,2);
+    Pin_init(&self.cols[2],GPIOA,1);
+    Pin_init(&self.cols[3],GPIOA,0);
 
 	for(int k=0; k<4 ; ++k){
-        Pin_init(&self.filas[k],GPIOA,0+k);
         Pin_escribe(&self.filas[k],1);
         Pin_modo(&self.filas[k],CPIN_SALIDA_OD_2MHz);
-
-        Pin_init(&self.cols[k],GPIOA,4+k);
         Pin_escribe(&self.cols[k],1);
         Pin_modo(&self.cols[k],CPIN_ENTRADA_PULL);
    }
@@ -40,22 +45,17 @@ char teclado_lee(void){
        
         Pin_escribe(&self.filas[i],0);
 
-        TimerSysTick_esperaMilisegundos(10);
-        while (!Pin_lee(&self.cols[0]))  {valor = teclado [i][0];}  
-        while (!Pin_lee(&self.cols[1]))  {valor = teclado [i][1];}  
-        while (!Pin_lee(&self.cols[2]))  {valor = teclado [i][2];}
-        while (!Pin_lee(&self.cols[3]))  {valor = teclado [i][3];}  
+        TimerSysTick_esperaMilisegundos(1);
+        // comprobar si la columna es 0 (tecla presionada) PERO NO ESPERAR QUE SE LIBERE
+       for ( int k = 0; k < 4; k++)
+       {
+        if(!Pin_lee(&self.cols[k])) {valor = teclado [i][k];}
+       } 
+
+        // Desactivar la fila (poner en 1
+
+        Pin_escribe(&self.filas[i],1);
 
     }
     return valor ;
-}
-
-
-bool comprobarClave(char* clave){
-	char claveDef[4]="1234";
-    if (strcmp(clave,claveDef)==0)
-    {
-        return false;
-    }
-    return true;
 }

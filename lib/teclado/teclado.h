@@ -9,6 +9,5 @@
 
 void teclado_init(void);
 char teclado_lee(void);
-bool comprobarClave(char* clave);
 
 #endif
