@@ -1,3 +1,9 @@
+/*
+Autor :  Ciccio, Ernesto José
+Carrera: Ingenieria Electrónica
+Materia: Electrónica IV 
+*/
+
 #include <alarma.h>
 #include <interfaz.h>
 #include <evento.h>
@@ -26,7 +32,7 @@ static App self ={.e = EV_NULO};
 
 
 static void iniciaRelojGPIO(void){  
-    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN ; //Puerto A
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN ;   //Puerto A
     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN ;   //Puerto B
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN ;   //Puerto C
 }
@@ -41,6 +47,7 @@ void App_init(void){
 	
     Entrada_init();
     Deteccion_init();    
+    
     //init pines armada, det. y sirena.
 
     // Pin armada ;
