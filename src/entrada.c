@@ -54,7 +54,6 @@ Evento Entrada_procesa(Evento  e)
         break;
     default:
         self.estado = ENTRADA_TECLA_LIBERADA;
-        break;
     }
 	return esalida;
 }

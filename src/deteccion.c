@@ -43,7 +43,7 @@ Evento Deteccion_procesa(Evento e)
     default:
         self.estado = ESTADO_NO_DETECTADO;
         e = EV_FIN_DETECCION;
-        break;
+
     }
 
     return e;

@@ -20,10 +20,10 @@ Evento TimerEvento_procesa(TimerEvento *self,Evento e)
             self->estado = TIMER_EVENTO_ESPERA ;
             e = EV_TIMEOUT;
         }
-        break;    
+    break;    
     }
     default:
-        break;
+    break;
     }
     return e ;
 }

@@ -14,16 +14,16 @@ void Interfaz_init(Interfaz *self,Pin *armada,Pin *deteccion,Pin *sirena, bool e
 	};
 }
 
-Evento Interfaz_actualiza(Interfaz *self, Evento e)
+Evento Interfaz_actualiza(Interfaz *self, Evento e) // ESTA FUNCION SE COMPORTA COMO UN LACH, pero podria decirse que se encuentra un maquina de estado en el.
 {
 	Evento esalida = EV_NULO;
 	switch(e){
-	break;case EV_ALERTA:
+	case EV_ALERTA:
 		self->sirena = true;
 		self->indDeteccion = true;  // Alerta implica detección
 	break;case EV_FIN_ALERTA:
 		self->sirena = false;
-	break;case EV_ARMADA:
+	break;case EV_ARMADA:			
 		self->indArmada = true;
 		if (self->indDeteccion)
 		    esalida = EV_DETECCION; // Recuerda que hay una detección activa.

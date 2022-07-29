@@ -74,10 +74,10 @@ void App_init(void){
 }
 
 void App_loop (void){
-    Interfaz_presenta(&self.interfaz);
+    Interfaz_presenta(&self.interfaz); // salidas al exterior .
     self.e = Deteccion_procesa(self.e);
     self.e = TimerEvento_procesa(&self.timer,self.e);
 	self.e = Entrada_procesa(self.e);
 	self.e = Alarma_procesa(&self.alarma, self.e);
-	self.e = Interfaz_actualiza(&self.interfaz,self.e);
+	self.e = Interfaz_actualiza(&self.interfaz,self.e); // Esta funcion actua como Latch, pero puede modelase considerarse como maquina de estado. 
 }
